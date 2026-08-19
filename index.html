@@ -1,170 +1,918 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staj Projeleri & Digital Twin Portfolyosu</title>
+
+    <title>Melih Yıldız | Staj Projeleri & Digital Twin</title>
+
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-color: #38bdf8;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --border-color: #334155;
+            --bg: #070b14;
+            --bg-secondary: #0b1220;
+
+            --card: rgba(17, 25, 40, 0.72);
+            --card-hover: rgba(25, 35, 55, 0.9);
+
+            --border: rgba(148, 163, 184, 0.14);
+            --border-hover: rgba(56, 189, 248, 0.45);
+
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+
+            --blue: #38bdf8;
+            --blue-dark: #0284c7;
+
+            --purple: #a78bfa;
+            --green: #34d399;
+
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 50px 20px;
+
+            color: var(--text);
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(56, 189, 248, 0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(167, 139, 250, 0.07),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 50% 100%,
+                    rgba(14, 165, 233, 0.05),
+                    transparent 35%
+                ),
+                var(--bg);
+
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 650px;
-            width: 100%;
+
+        /* =========================
+           BACKGROUND GRID
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.018) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent 80%
+            );
+
+            pointer-events: none;
+            z-index: -1;
         }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            width: 100%;
+            max-width: 760px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 45px;
+        }
+
+        .profile-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 7px 13px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 30px;
+
+            background: rgba(56, 189, 248, 0.06);
+
+            color: var(--blue);
+
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+        }
+
+        .profile-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 8px rgba(52, 211, 153, 0.8);
         }
 
         header h1 {
-            font-size: 1.8rem;
-            color: var(--accent-color);
-            margin-bottom: 8px;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+
+            line-height: 1.15;
+
+            margin-bottom: 12px;
+
+            letter-spacing: -1px;
+
+            background: linear-gradient(
+                120deg,
+                #f8fafc,
+                #cbd5e1,
+                #38bdf8
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
         }
 
         header p {
-            color: var(--text-sub);
-            font-size: 0.95rem;
+            max-width: 550px;
+            margin: auto;
+
+            color: var(--text-secondary);
+
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            margin-top: 38px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 15px;
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 28px;
+            height: 28px;
+
+            border-radius: 8px;
+
+            background: rgba(56, 189, 248, 0.08);
+
+            color: var(--blue);
+
+            font-size: 0.75rem;
+            font-weight: 700;
         }
 
         .section-title {
-            font-size: 1.1rem;
-            margin: 25px 0 12px 0;
-            color: var(--text-sub);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
+            color: #cbd5e1;
+
+            font-size: 0.78rem;
+            font-weight: 700;
+
+            letter-spacing: 1.3px;
+            text-transform: uppercase;
         }
 
+        .section-line {
+            flex: 1;
+
+            height: 1px;
+
+            background: var(--border);
+        }
+
+
+        /* =========================
+           NORMAL CARD
+        ========================= */
+
         .link-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 16px 20px;
-            margin-bottom: 12px;
+            position: relative;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            width: 100%;
+
+            padding: 20px 21px;
+
+            margin-bottom: 12px;
+
+            border: 1px solid var(--border);
+            border-radius: 15px;
+
+            background: var(--card);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            color: var(--text);
             text-decoration: none;
-            color: var(--text-main);
-            transition: transform 0.2s, border-color 0.2s;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.12);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .link-card::before {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 3px;
+
+            background: var(--blue);
+
+            opacity: 0;
+
+            transition: opacity 0.25s ease;
         }
 
         .link-card:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent-color);
+            transform: translateY(-3px);
+
+            background: var(--card-hover);
+
+            border-color: var(--border-hover);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+
+        /* =========================
+           CARD INFO
+        ========================= */
+
+        .link-info {
+            min-width: 0;
         }
 
         .link-info h3 {
-            font-size: 1rem;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+
+            font-size: 0.98rem;
+            font-weight: 650;
+
+            letter-spacing: 0.1px;
         }
 
         .link-info p {
-            font-size: 0.85rem;
-            color: var(--text-sub);
+            color: var(--text-secondary);
+
+            font-size: 0.82rem;
+            line-height: 1.5;
         }
+
+
+        /* =========================
+           ICON
+        ========================= */
+
+        .card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 11px;
+
+            background: rgba(56, 189, 248, 0.07);
+
+            border: 1px solid rgba(56, 189, 248, 0.12);
+
+            color: var(--blue);
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           BADGE
+        ========================= */
 
         .badge {
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent-color);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+
+            flex-shrink: 0;
+
+            padding: 6px 10px;
+
+            border-radius: 8px;
+
+            background: rgba(56, 189, 248, 0.08);
+
+            border: 1px solid rgba(56, 189, 248, 0.12);
+
+            color: var(--blue);
+
+            font-size: 0.7rem;
+            font-weight: 700;
+
             white-space: nowrap;
+
+            letter-spacing: 0.3px;
         }
+
+
+        /* =========================
+           M4 ASSISTANT FEATURE CARD
+        ========================= */
+
+        .featured-card {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            padding: 26px;
+
+            margin-bottom: 12px;
+
+            border-radius: 19px;
+
+            text-decoration: none;
+            color: var(--text);
+
+            overflow: hidden;
+
+            border: 1px solid rgba(56, 189, 248, 0.38);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(14, 116, 144, 0.25),
+                    rgba(30, 41, 59, 0.82)
+                );
+
+            box-shadow:
+                0 0 0 1px rgba(56, 189, 248, 0.04),
+                0 20px 60px rgba(2, 132, 199, 0.13);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(56, 189, 248, 0.7);
+
+            box-shadow:
+                0 20px 70px rgba(2, 132, 199, 0.25);
+        }
+
+        .featured-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            right: -100px;
+            top: -120px;
+
+            border-radius: 50%;
+
+            background: rgba(56, 189, 248, 0.12);
+
+            filter: blur(30px);
+
+            pointer-events: none;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            margin-bottom: 12px;
+
+            padding: 6px 10px;
+
+            border-radius: 7px;
+
+            background: rgba(56, 189, 248, 0.12);
+
+            border: 1px solid rgba(56, 189, 248, 0.25);
+
+            color: var(--blue);
+
+            font-size: 0.67rem;
+            font-weight: 800;
+
+            letter-spacing: 0.8px;
+        }
+
+        .featured-label span {
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background: var(--blue);
+
+            box-shadow:
+                0 0 8px rgba(56, 189, 248, 0.9);
+        }
+
+        .featured-card h3 {
+            font-size: 1.25rem;
+
+            margin-bottom: 7px;
+
+            letter-spacing: -0.2px;
+        }
+
+        .featured-card p {
+            max-width: 520px;
+
+            color: #a8b6c9;
+
+            font-size: 0.86rem;
+            line-height: 1.6;
+        }
+
+        .featured-arrow {
+            position: relative;
+            z-index: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            width: 48px;
+            height: 48px;
+
+            border-radius: 13px;
+
+            background: rgba(56, 189, 248, 0.1);
+
+            border: 1px solid rgba(56, 189, 248, 0.2);
+
+            color: var(--blue);
+
+            font-size: 20px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .featured-card:hover .featured-arrow {
+            transform: translateX(4px);
+
+            background: rgba(56, 189, 248, 0.18);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
+            margin-top: 55px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid var(--border);
+
             text-align: center;
-            margin-top: 40px;
-            font-size: 0.8rem;
-            color: var(--text-sub);
+
+            color: var(--text-muted);
+
+            font-size: 0.76rem;
+
+            line-height: 1.7;
         }
+
+        footer strong {
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 35px 15px;
+            }
+
+            header {
+                margin-bottom: 35px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .link-card {
+                padding: 17px;
+            }
+
+            .featured-card {
+                padding: 21px;
+            }
+
+            .featured-card h3 {
+                font-size: 1.1rem;
+            }
+
+            .badge {
+                display: none;
+            }
+
+            .card-icon {
+                width: 38px;
+                height: 38px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Staj Projeleri Portfolyosu</h1>
-            <p>Unity Digital Twin Uygulamaları ve Dokümantasyonlar</p>
-        </header>
+<div class="container">
 
-        <div class="section-title">Ayrı Olarak Geliştirdiğim Yapay Zeka Destekli Mail Analiz Programı (M4 Assistant)</div>
 
-        <a href="https://m4-assistant.onrender.com" class="link-card" target="_blank">
-            <div class="link-info">
-                <h3>M4 ASSISTANT</h3>
-                <p>Tarayıcı üzerinden YZ desteği ile mail analizi.</p>
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="profile-badge">
+            <span class="profile-dot"></span>
+            STAJ PROJELERİ • 2026
+        </div>
+
+        <h1>
+            Staj Projeleri Portfolyosu
+        </h1>
+
+        <p>
+            Unity Digital Twin uygulamaları, yapay zeka projeleri,
+            teknik dokümantasyonlar ve geliştirme çalışmalarım.
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         FEATURED PROJECT
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                01
             </div>
-            <span class="badge">Yeni</span>
+
+            <div class="section-title">
+                Öne Çıkan Proje
+            </div>
+
+            <div class="section-line"></div>
+
+        </div>
+
+
+        <a
+            href="https://m4-assistant.onrender.com"
+            class="featured-card"
+            target="_blank"
+        >
+
+            <div class="featured-content">
+
+                <div class="featured-label">
+                    <span></span>
+                    YENİ PROJE
+                </div>
+
+                <h3>
+                    M4 ASSISTANT
+                </h3>
+
+                <p>
+                    Yapay zeka destekli mail analiz ve yönetim uygulaması.
+                    Uzun e-postaları analiz ederek özetler, önemli noktaları
+                    belirler ve kullanıcıya karar verme sürecinde yardımcı olur.
+                </p>
+
+            </div>
+
+            <div class="featured-arrow">
+                →
+            </div>
+
         </a>
 
-        <div class="section-title">Canlı Digital Twin Demoları (WebGL)</div>
+    </section>
 
-        <a href="https://play.unity.com/en/games/f2c60850-81cf-47c2-8e16-15deeb3b56a3/eker-sut-nakil-sureci-digital-twini" class="link-card" target="_blank">
-            <div class="link-info">
-                <h3>EKER SÜT NAKİL SÜRECİ DİGİTAL TWİNİ</h3>
-                <p>Tarayıcı üzerinden doğrudan çalıştırıp incelenebilir.</p>
+
+    <!-- =========================
+         DIGITAL TWINS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                02
             </div>
-            <span class="badge">Canlı Demo</span>
+
+            <div class="section-title">
+                Canlı Digital Twin Demoları
+            </div>
+
+            <div class="section-line"></div>
+
+        </div>
+
+
+        <!-- PROJECT 1 -->
+
+        <a
+            href="https://play.unity.com/en/games/f2c60850-81cf-47c2-8e16-15deeb3b56a3/eker-sut-nakil-sureci-digital-twini"
+            class="link-card"
+            target="_blank"
+        >
+
+            <div class="card-icon">
+                ◈
+            </div>
+
+            <div class="link-info">
+
+                <h3>
+                    EKER SÜT NAKİL SÜRECİ DİGİTAL TWİNİ
+                </h3>
+
+                <p>
+                    Süt kabul ve nakil sürecinin Unity WebGL tabanlı
+                    dijital ikiz simülasyonu.
+                </p>
+
+            </div>
+
+            <span class="badge">
+                WEBGL
+            </span>
+
         </a>
 
-        <a href="digital-twin-2/index.html" class="link-card" target="_blank">
-            <div class="link-info">
-                <h3>Digital Twin Projesi #2</h3>
-                <p>Tarayıcı üzerinden doğrudan çalıştırıp incelenebilir.</p>
+
+        <!-- PROJECT 2 -->
+
+        <a
+            href="digital-twin-2/index.html"
+            class="link-card"
+            target="_blank"
+        >
+
+            <div class="card-icon">
+                ◇
             </div>
-            <span class="badge">Canlı Demo</span>
+
+            <div class="link-info">
+
+                <h3>
+                    EKER KREMA DOLUM MAKİNESİ DİGİTAL TWİNİ
+                </h3>
+
+                <p>
+                    Endüstriyel krema dolum makinesinin
+                    dijital ikiz uygulaması.
+                </p>
+
+            </div>
+
+            <span class="badge">
+                WEBGL
+            </span>
+
         </a>
 
-        <div class="section-title">Dosyalar ve Dokümanlar</div>
+    </section>
 
-        <a href="https://drive.google.com/YOUR_DRIVE_LINK" class="link-card" target="_blank">
-            <div class="link-info">
-                <h3>Projeler & PDF'ler</h3>
-                <p>Staj sürecindeki teknik çizimler ve proje detayları.</p>
+
+    <!-- =========================
+         DOCUMENTS
+    ========================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <div class="section-number">
+                03
             </div>
-            <span class="badge">Google Drive</span>
+
+            <div class="section-title">
+                Dosyalar & Dokümantasyon
+            </div>
+
+            <div class="section-line"></div>
+
+        </div>
+
+
+        <!-- GOOGLE DRIVE -->
+
+        <a
+            href="https://drive.google.com/YOUR_DRIVE_LINK"
+            class="link-card"
+            target="_blank"
+        >
+
+            <div class="card-icon">
+                ↗
+            </div>
+
+            <div class="link-info">
+
+                <h3>
+                    Projeler & PDF'ler
+                </h3>
+
+                <p>
+                    Teknik çizimler, proje dokümanları ve
+                    staj sürecindeki çalışmalar.
+                </p>
+
+            </div>
+
+            <span class="badge">
+                DRIVE
+            </span>
+
         </a>
 
-        <a href="https://github.com/mel1hyildiz/melihyildiz.github.io/tree/main/Scripts" class="link-card" target="_blank">
-            <div class="link-info">
-                <h3>Kaynak Kodları (GitHub Reposu)</h3>
-                <p>Unity C# scriptleri.</p>
+
+        <!-- GITHUB -->
+
+        <a
+            href="https://github.com/mel1hyildiz/melihyildiz.github.io/tree/main/Scripts"
+            class="link-card"
+            target="_blank"
+        >
+
+            <div class="card-icon">
+                &lt;/&gt;
             </div>
-            <span class="badge">GitHub</span>
+
+            <div class="link-info">
+
+                <h3>
+                    Kaynak Kodları
+                </h3>
+
+                <p>
+                    Unity C# scriptleri ve projelerde kullanılan
+                    geliştirme kodları.
+                </p>
+
+            </div>
+
+            <span class="badge">
+                GITHUB
+            </span>
+
         </a>
 
-        <footer>
-            <p>Melih Yıldız • Staj Defteri Projeleri • 2026</p>
-        </footer>
-    </div>
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            <strong>Melih Yıldız</strong>
+            • Staj Projeleri & Digital Twin
+        </p>
+
+        <p>
+            Unity • C# • Digital Twin • Yapay Zeka
+        </p>
+
+    </footer>
+
+
+</div>
 
 </body>
 </html>
+```
