@@ -41,6 +41,15 @@ body{
         #03050a;
 }
 
+/* =========================================================
+   CENTERED CONTENT — EKRANIN %65-75'İ
+   ========================================================= */
+
+.container{
+    width: min(72vw, 1250px);
+    margin: 0 auto;
+}
+
 /* Deep-space atmosphere — fixed to the viewport */
 body::before{
     content:"";
@@ -683,7 +692,13 @@ footer strong{color:#91a0b3}
 
 /* MOBILE */
 @media(max-width:600px){
-    body{padding:22px 13px 40px}
+    .container{
+        width:100%;
+    }
+
+    body{
+        padding:22px 13px 40px;
+    }
     header{
         padding:27px 23px 29px;
         margin-bottom:30px;
