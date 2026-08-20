@@ -32,24 +32,91 @@ body{
     padding:42px 20px 55px;
     color:var(--text);
     font-family:Inter,"Segoe UI",system-ui,sans-serif;
-    background:
-        radial-gradient(900px 500px at 50% -10%,rgba(59,130,246,.12),transparent 65%),
-        radial-gradient(700px 500px at 100% 40%,rgba(66,216,255,.055),transparent 65%),
-        linear-gradient(180deg,#05070c 0%,#080c13 100%);
     overflow-x:hidden;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(59,130,246,.18),transparent 24%),
+        radial-gradient(circle at 84% 12%,rgba(66,216,255,.11),transparent 22%),
+        radial-gradient(circle at 75% 72%,rgba(155,140,255,.10),transparent 25%),
+        radial-gradient(circle at 20% 88%,rgba(56,211,159,.055),transparent 22%),
+        #05070c;
+    position:relative;
 }
 
+/* Atmospheric background */
 body::before{
     content:"";
     position:fixed;
-    inset:0;
+    inset:-20%;
+    z-index:-3;
     pointer-events:none;
-    opacity:.35;
+    background:
+        conic-gradient(
+            from 210deg at 50% 50%,
+            transparent 0deg,
+            rgba(59,130,246,.06) 45deg,
+            transparent 95deg,
+            rgba(66,216,255,.045) 150deg,
+            transparent 205deg,
+            rgba(155,140,255,.05) 265deg,
+            transparent 320deg
+        );
+    filter:blur(45px);
+    animation:ambientRotate 24s linear infinite;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+    opacity:.34;
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+        linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
     background-size:48px 48px;
-    mask-image:linear-gradient(to bottom,#000,transparent 75%);
+    mask-image:
+        radial-gradient(ellipse at center,#000 0%,rgba(0,0,0,.8) 42%,transparent 82%);
+}
+
+/* Subtle circuit / data paths */
+.container::before,
+.container::after{
+    content:"";
+    position:fixed;
+    z-index:-1;
+    pointer-events:none;
+    opacity:.18;
+}
+
+.container::before{
+    width:420px;
+    height:420px;
+    left:-210px;
+    top:24%;
+    border:1px solid rgba(66,216,255,.20);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 35px rgba(66,216,255,.025),
+        0 0 0 70px rgba(66,216,255,.018),
+        inset 0 0 70px rgba(66,216,255,.035);
+}
+
+.container::after{
+    width:520px;
+    height:520px;
+    right:-300px;
+    bottom:2%;
+    border:1px solid rgba(155,140,255,.16);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 45px rgba(155,140,255,.018),
+        0 0 0 90px rgba(155,140,255,.012);
+}
+
+@keyframes ambientRotate{
+    from{transform:rotate(0deg) scale(1.05)}
+    to{transform:rotate(360deg) scale(1.05)}
 }
 
 .container{
@@ -57,6 +124,22 @@ body::before{
     max-width:850px;
     margin:auto;
 }
+
+.bg-node{
+    position:fixed;
+    z-index:-1;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--cyan);
+    box-shadow:0 0 18px rgba(66,216,255,.8);
+    pointer-events:none;
+    opacity:.55;
+}
+
+.bg-node-1{left:11%;top:31%}
+.bg-node-2{right:12%;top:54%;background:var(--purple);box-shadow:0 0 18px rgba(155,140,255,.8)}
+.bg-node-3{left:26%;bottom:13%;background:var(--green);box-shadow:0 0 18px rgba(56,211,159,.7)}
 
 /* HERO */
 header{
@@ -419,6 +502,10 @@ footer strong{color:#91a0b3}
 </head>
 
 <body>
+
+<div class="bg-node bg-node-1"></div>
+<div class="bg-node bg-node-2"></div>
+<div class="bg-node bg-node-3"></div>
 
 <div class="container">
 
